@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+
 class Result
 {
     /*
@@ -8,7 +12,7 @@ class Result
      *  1. INTEGER n
      *  2. INTEGER_ARRAY ar
      */
-    public static int sockMerchant(int n, System.Collections.Generic.List<int> ar)
+    public static int sockMerchant(int n, List<int> ar)
     {
         int pairs = 0;
         int[] counts = new int[101];
@@ -31,17 +35,26 @@ class Solution
 {
     public static void Main(string[] args)
     {
-        System.IO.TextWriter textWriter = new System.IO.StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
-
-        int n = 0;
-        string nInput = System.Console.ReadLine();
-        if (nInput != null)
+        // Smart output selection: to file for HackerRank, to console for local testing
+        string outputPath = Environment.GetEnvironmentVariable("OUTPUT_PATH");
+        TextWriter textWriter;
+        
+        if (!string.IsNullOrEmpty(outputPath))
         {
-            n = System.Convert.ToInt32(nInput.Trim());
+            textWriter = new StreamWriter(outputPath, true);
+        }
+        else
+        {
+            textWriter = Console.Out;
         }
 
-        System.Collections.Generic.List<int> ar = new System.Collections.Generic.List<int>();
-        string arLine = System.Console.ReadLine();
+        // Read input data
+        string nInput = Console.ReadLine();
+        if (nInput == null) return;
+        int n = Convert.ToInt32(nInput.Trim());
+
+        List<int> ar = new List<int>();
+        string arLine = Console.ReadLine();
         
         if (arLine != null)
         {
@@ -50,16 +63,23 @@ class Solution
             {
                 if (!string.IsNullOrEmpty(s))
                 {
-                    ar.Add(System.Convert.ToInt32(s));
+                    ar.Add(Convert.ToInt32(s));
                 }
             }
         }
 
+        // Call logic
         int result = Result.sockMerchant(n, ar);
 
+        // Print result
         textWriter.WriteLine(result);
 
         textWriter.Flush();
-        textWriter.Close();
+        
+        // Close file only if we are on HackerRank
+        if (!string.IsNullOrEmpty(outputPath))
+        {
+            textWriter.Close();
+        }
     }
 }
