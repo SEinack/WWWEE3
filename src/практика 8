@@ -1,62 +1,62 @@
-using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.Collections;
-using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.Serialization;
-using System.Text.RegularExpressions;
-using System.Text;
-using System;
-
 class Result
 {
-
     /*
      * Complete the 'migratoryBirds' function below.
      *
      * The function is expected to return an INTEGER.
      * The function accepts INTEGER_ARRAY arr as parameter.
      */
-
-    public static int migratoryBirds(List<int> arr)
+    public static int migratoryBirds(System.Collections.Generic.List<int> arr)
     {
-int[] count = new int[6];
+        int[] counts = new int[6];
+        
+        foreach (int type in arr)
+        {
+            counts[type]++;
+        }
 
-foreach (int bird in arr)
-{
-    count[bird]++;
-}
+        int maxCount = 0;
+        int maxId = 0;
 
-int maxCount = 0;
-int result = 0;
+        for (int i = 1; i <= 5; i++)
+        {
+            if (counts[i] > maxCount)
+            {
+                maxCount = counts[i];
+                maxId = i;
+            }
+        }
 
-for (int i = 1; i <= 5; i++)
-{
-    if (count[i] > maxCount)
-    {
-        maxCount = count[i];
-        result = i;
+        return maxId;
     }
-}
-
-return result;
-    }
-
 }
 
 class Solution
 {
     public static void Main(string[] args)
     {
-        TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+        System.IO.TextWriter textWriter = new System.IO.StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
 
-        int arrCount = Convert.ToInt32(Console.ReadLine().Trim());
+        string nInput = System.Console.ReadLine();
+        if (nInput != null)
+        {
+            int arrCount = System.Convert.ToInt32(nInput.Trim());
+        }
 
-        List<int> arr = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(arrTemp => Convert.ToInt32(arrTemp)).ToList();
+        System.Collections.Generic.List<int> arr = new System.Collections.Generic.List<int>();
+        string arrLine = System.Console.ReadLine();
+        
+        if (arrLine != null)
+        {
+            string[] arrTokens = arrLine.TrimEnd().Split(' ');
+            foreach (string s in arrTokens)
+            {
+                if (!string.IsNullOrEmpty(s))
+                {
+                    arr.Add(System.Convert.ToInt32(s));
+                }
+            }
+        }
 
         int result = Result.migratoryBirds(arr);
 
