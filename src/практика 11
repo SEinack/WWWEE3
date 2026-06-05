@@ -1,20 +1,8 @@
-using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.Collections;
-using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.Serialization;
-using System.Text.RegularExpressions;
-using System.Text;
 using System;
+using System.IO;
 
 class Result
 {
-
     /*
      * Complete the 'pageCount' function below.
      *
@@ -23,32 +11,50 @@ class Result
      *  1. INTEGER n
      *  2. INTEGER p
      */
-
     public static int pageCount(int n, int p)
     {
-int fromFront = p / 2;
-int fromBack = n / 2 - p / 2;
+        int fromFront = p / 2;
+        int fromBack = n / 2 - p / 2;
 
-return Math.Min(fromFront, fromBack);
+        return Math.Min(fromFront, fromBack);
     }
-
 }
 
 class Solution
 {
     public static void Main(string[] args)
     {
-        TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+        // Smart output selection: to file for HackerRank, to console for local testing
+        string outputPath = Environment.GetEnvironmentVariable("OUTPUT_PATH");
+        TextWriter textWriter;
+        
+        if (!string.IsNullOrEmpty(outputPath))
+        {
+            textWriter = new StreamWriter(outputPath, true);
+        }
+        else
+        {
+            textWriter = Console.Out;
+        }
 
-        int n = Convert.ToInt32(Console.ReadLine().Trim());
+        string nInput = Console.ReadLine();
+        if (nInput == null) return;
+        int n = Convert.ToInt32(nInput.Trim());
 
-        int p = Convert.ToInt32(Console.ReadLine().Trim());
+        string pInput = Console.ReadLine();
+        if (pInput == null) return;
+        int p = Convert.ToInt32(pInput.Trim());
 
         int result = Result.pageCount(n, p);
 
         textWriter.WriteLine(result);
 
         textWriter.Flush();
-        textWriter.Close();
+        
+        if (!string.IsNullOrEmpty(outputPath))
+        {
+            textWriter.Close();
+        }
     }
 }
+
