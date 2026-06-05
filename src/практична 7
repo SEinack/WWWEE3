@@ -1,53 +1,78 @@
 class Result
 {
-
     /*
      * Complete the 'breakingRecords' function below.
      *
      * The function is expected to return an INTEGER_ARRAY.
      * The function accepts INTEGER_ARRAY scores as parameter.
      */
-
-    public static List<int> breakingRecords(List<int> scores)
+    public static System.Collections.Generic.List<int> breakingRecords(System.Collections.Generic.List<int> scores)
     {
-int maxScore = scores[0];
-int minScore = scores[0];
+        if (scores == null || scores.Count == 0) 
+        {
+            System.Collections.Generic.List<int> emptyResult = new System.Collections.Generic.List<int>();
+            emptyResult.Add(0);
+            emptyResult.Add(0);
+            return emptyResult;
+        }
 
-int maxBreaks = 0;
-int minBreaks = 0;
+        int maxScore = scores[0];
+        int minScore = scores[0];
 
-for (int i = 1; i < scores.Count; i++)
-{
-    if (scores[i] > maxScore)
-    {
-        maxScore = scores[i];
-        maxBreaks++;
+        int maxBreaks = 0;
+        int minBreaks = 0;
+
+        for (int i = 1; i < scores.Count; i++)
+        {
+            if (scores[i] > maxScore)
+            {
+                maxScore = scores[i];
+                maxBreaks++;
+            }
+            else if (scores[i] < minScore)
+            {
+                minScore = scores[i];
+                minBreaks++;
+            }
+        }
+
+        System.Collections.Generic.List<int> result = new System.Collections.Generic.List<int>();
+        result.Add(maxBreaks);
+        result.Add(minBreaks);
+        return result;
     }
-    else if (scores[i] < minScore)
-    {
-        minScore = scores[i];
-        minBreaks++;
-    }
-}
-
-return new List<int> { maxBreaks, minBreaks };
-    }
-
 }
 
 class Solution
 {
     public static void Main(string[] args)
     {
-        TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+        System.IO.TextWriter textWriter = new System.IO.StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
 
-        int n = Convert.ToInt32(Console.ReadLine().Trim());
+        string nInput = System.Console.ReadLine();
+        if (nInput != null)
+        {
+            int n = System.Convert.ToInt32(nInput.Trim());
+        }
 
-        List<int> scores = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(scoresTemp => Convert.ToInt32(scoresTemp)).ToList();
+        System.Collections.Generic.List<int> scores = new System.Collections.Generic.List<int>();
+        string scoresLine = System.Console.ReadLine();
+        
+        if (scoresLine != null)
+        {
+            string[] scoresTokens = scoresLine.TrimEnd().Split(' ');
+            foreach (string s in scoresTokens)
+            {
+                if (!string.IsNullOrEmpty(s))
+                {
+                    scores.Add(System.Convert.ToInt32(s));
+                }
+            }
+        }
 
-        List<int> result = Result.breakingRecords(scores);
+        System.Collections.Generic.List<int> result = Result.breakingRecords(scores);
 
-        textWriter.WriteLine(String.Join(" ", result));
+        textWriter.WriteLine(result[0] + " " + result[1]);
 
         textWriter.Flush();
         textWriter.Close();
