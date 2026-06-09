@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-
 class Result
 {
     /*
@@ -26,11 +25,9 @@ class Result
                 pairs++;
             }
         }
-
         return pairs;
     }
 }
-
 class Solution
 {
     public static void Main(string[] args)
@@ -38,7 +35,7 @@ class Solution
         // Smart output selection: to file for HackerRank, to console for local testing
         string outputPath = Environment.GetEnvironmentVariable("OUTPUT_PATH");
         TextWriter textWriter;
-        
+    
         if (!string.IsNullOrEmpty(outputPath))
         {
             textWriter = new StreamWriter(outputPath, true);
@@ -47,7 +44,6 @@ class Solution
         {
             textWriter = Console.Out;
         }
-
         // Read input data
         string nInput = Console.ReadLine();
         if (nInput == null) return;
@@ -67,15 +63,12 @@ class Solution
                 }
             }
         }
-
         // Call logic
         int result = Result.sockMerchant(n, ar);
-
         // Print result
         textWriter.WriteLine(result);
-
         textWriter.Flush();
-        
+    
         // Close file only if we are on HackerRank
         if (!string.IsNullOrEmpty(outputPath))
         {
