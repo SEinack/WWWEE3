@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
 class Solution
 {
     public static List<int> GradingStudents(List<int> grades)
@@ -19,7 +18,6 @@ class Solution
         }
         return grades;
     }
-
     static void Main()
     {
         if (!int.TryParse(Console.ReadLine(), out int n)) return;
