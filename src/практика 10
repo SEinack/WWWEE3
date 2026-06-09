@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-
 class Result
 {
     /*
@@ -78,3 +77,4 @@ class Solution
         }
     }
 }
+.cs
