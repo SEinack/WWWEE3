@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-
 class Result
 {
     /*
@@ -15,11 +14,9 @@ class Result
     {
         int fromFront = p / 2;
         int fromBack = n / 2 - p / 2;
-
         return Math.Min(fromFront, fromBack);
     }
 }
-
 class Solution
 {
     public static void Main(string[] args)
@@ -36,7 +33,6 @@ class Solution
         {
             textWriter = Console.Out;
         }
-
         string nInput = Console.ReadLine();
         if (nInput == null) return;
         int n = Convert.ToInt32(nInput.Trim());
@@ -44,13 +40,9 @@ class Solution
         string pInput = Console.ReadLine();
         if (pInput == null) return;
         int p = Convert.ToInt32(pInput.Trim());
-
         int result = Result.pageCount(n, p);
-
         textWriter.WriteLine(result);
-
         textWriter.Flush();
-        
         if (!string.IsNullOrEmpty(outputPath))
         {
             textWriter.Close();
