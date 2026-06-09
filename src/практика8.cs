@@ -26,11 +26,9 @@ class Result
                 maxId = i;
             }
         }
-
         return maxId;
     }
 }
-
 class Solution
 {
     public static void Main(string[] args)
@@ -42,10 +40,9 @@ class Solution
         {
             int arrCount = System.Convert.ToInt32(nInput.Trim());
         }
-
         System.Collections.Generic.List<int> arr = new System.Collections.Generic.List<int>();
         string arrLine = System.Console.ReadLine();
-        
+    
         if (arrLine != null)
         {
             string[] arrTokens = arrLine.TrimEnd().Split(' ');
@@ -57,9 +54,7 @@ class Solution
                 }
             }
         }
-
         int result = Result.migratoryBirds(arr);
-
         textWriter.WriteLine(result);
 
         textWriter.Flush();
