@@ -2,17 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-
 class Result
 {
     public static int getTotalX(List<int> a, List<int> b)
     {
         int count = 0;
-
         for (int x = a.Max(); x <= b.Min(); x++)
         {
             bool valid = true;
-
             foreach (int num in a)
             {
                 if (x % num != 0)
@@ -21,7 +18,6 @@ class Result
                     break;
                 }
             }
-
             if (valid)
             {
                 foreach (int num in b)
@@ -37,11 +33,9 @@ class Result
             if (valid)
                 count++;
         }
-
         return count;
     }
 }
-
 class Solution
 {
     public static void Main(string[] args)
@@ -58,7 +52,6 @@ class Solution
         {
             writer = Console.Out;
         }
-
         string[] firstMultipleInput = Console.ReadLine().Trim().Split(' ');
         int n = int.Parse(firstMultipleInput[0]);
         int m = int.Parse(firstMultipleInput[1]);
