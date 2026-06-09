@@ -36,7 +36,6 @@ class Solution
         string nInput = Console.ReadLine();
         if (nInput == null) return;
         int n = Convert.ToInt32(nInput.Trim());
-
         string pInput = Console.ReadLine();
         if (pInput == null) return;
         int p = Convert.ToInt32(pInput.Trim());
