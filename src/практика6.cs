@@ -55,12 +55,9 @@ class Solution
         string[] firstMultipleInput = Console.ReadLine().Trim().Split(' ');
         int n = int.Parse(firstMultipleInput[0]);
         int m = int.Parse(firstMultipleInput[1]);
-
         List<int> a = Console.ReadLine().Trim().Split().Select(int.Parse).ToList();
         List<int> b = Console.ReadLine().Trim().Split().Select(int.Parse).ToList();
-
         int result = Result.getTotalX(a, b);
-
         writer.WriteLine(result);
         writer.Flush();
 
